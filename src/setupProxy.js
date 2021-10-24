@@ -16,6 +16,11 @@ module.exports = function(app) {
       target: 'http://localhost:5001',
       changeOrigin: true,
       pathRewrite: {'^/api2': ''}
+    }),
+    proxy('/github', { 
+      target: 'https://api.github.com/',
+      changeOrigin: true,
+      pathRewrite: {'^/github': ''}
     })
   )
 }

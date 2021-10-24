@@ -6,9 +6,15 @@ import Header from "./components/Header"
 import List from "./components/List"
 import Footer from "./components/Footer"
 import Axios from "./components/Axios"
+import Search from "./components/Github/Search"
+import GitHubList from "./components/Github/List"
 export default class App extends Component {
     state = {
         list: [{ id: 1, text: "打代码", done:false}, { id: 2, text: "睡觉", done:false},{ id:3, text: "吃饭",done:true}],
+        responeData:[],
+        isFirst:true,
+        isLoading:false,
+        error:null
     }
     addList = (str="list", item)=>{
         const newlist = [item, ...this.state.list]
@@ -43,6 +49,15 @@ export default class App extends Component {
         })
         this.setState({list: newList})
     }
+    //搜索用户 github
+    saveUserList = (respone)=>{
+        this.setState({responeData: respone})
+    }
+    //修改状态 github
+    saveState = (data)=>{
+        this.setState(data)
+    }
+
     render() {
         return (
             <div>
@@ -56,6 +71,16 @@ export default class App extends Component {
                     </div>
                 </div>
                 <Axios/>
+                <div>
+                    <div className="container">
+                        <Search saveUserList={this.saveUserList} saveState={this.saveState}/>
+                        <GitHubList {...this.state}/>
+                    </div>
+                </div>
+                
+                
+
+
             </div>
         )
     }
