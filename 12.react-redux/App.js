@@ -3,8 +3,7 @@ import React, { Component } from "react"
 
 import {Link,NavLink,Switch,Route} from 'react-router-dom'
 import store from "./components/Redux/store"
-// import Count from "./containers/Count"
-import Count from './components/Count'
+import Count from "./containers/Count"
 export default class App extends Component {
 
 
@@ -12,8 +11,7 @@ export default class App extends Component {
         return (
           <div>  
               <div>
-              {/* <Count store={store}/> */}
-              <Count/>
+              <Count store={store}/>
               </div>
           </div>
           
